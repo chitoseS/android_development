@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">WebView-20190909</string>
+    <string name="Screen message">First Message</string>
+    <string name="onButton">Next</string>
+    <string name="Screen message">サンプルの遷移先です</string>
+    <string name="Screen message">サンプルの遷移先です</string>
+    <string name="Screen message">サンプルの遷移先です</string>
+    <string name="Screen message">サンプルの遷移先です</string>
+    <string name="Screen message">サンプルの遷移先です</string>
+    <string name="screen_message">サンプルの遷移先です</string>
 </resources>
