@@ -15,7 +15,7 @@ import android.webkit.WebViewClient;
 // リフレッシュボタンを実装する。
 // テストコードを書く。
 
-public class MainActivity extends AppCompatActivity {
+public class WebView_Google extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // WebView
-        WebView myWebView = (WebView) findViewById(R.id.webView); // レイアウトに設置したWebViewを追加します。
+        WebView myWebView = findViewById(R.id.webView); // レイアウトに設置したWebViewを追加します。
         myWebView.setWebViewClient(new WebViewClient()); // リンクをクリックしたときに標準ブラウザへ遷移させずにWebView内で表示
         myWebView.loadUrl("https://www.google.com/"); // 表示させたいURLを記述します。
     }
