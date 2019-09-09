@@ -8,7 +8,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 //TODO:
-// ボタンが実装できる領域を確保する。
 // 戻るボタンを実装する。
 // リフレッシュボタンを実装する。
 // テストコードを書く。
