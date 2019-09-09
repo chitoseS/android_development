@@ -26,4 +26,5 @@ public class SecondScreen extends AppCompatActivity {
 //        //遷移先の画面を起動
         startActivity(intent);
     }
+
 }
