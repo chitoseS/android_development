@@ -12,9 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".FirstScreen" />
         <activity android:name=".SecondScreen"/>
-        <activity android:name=".WebView_Google" />
-        <activity android:name=".FirstScreen">
+        <activity android:name=".WebView_Google">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
