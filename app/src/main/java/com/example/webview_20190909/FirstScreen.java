@@ -24,11 +24,11 @@ public class FirstScreen extends AppCompatActivity {
     public void onClick(View v){
         Log.v("test","----------------");
 //        // インテントの作成
-//        Intent intent = new Intent(this, FirstScreen.class);
+        Intent intent = new Intent(this, SecondScreen.class);
 //        EditText editText = this.findViewById(R.id.button);
 //        intent.putExtra("sendText",editText.getText().toString());
-////        //遷移先の画面を起動
-//        startActivity(intent);
+//        //遷移先の画面を起動
+        startActivity(intent);
     }
 
 }
