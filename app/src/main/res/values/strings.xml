@@ -2,4 +2,5 @@
     <string name="app_name">WebView-20190909</string>
     <string name="onButton">Next</string>
     <string name="screen_massage">画面遷移先です。</string>
+    <string name="return_button">RETURN</string>
 </resources>
