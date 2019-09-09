@@ -8,9 +8,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 //TODO:
-// WebViewを使ってGoogleをアプリ内で表示させる。[完了]
-// 画面遷移用のイベントを起すボタンを実装する。
-// - 2つ目の画面を追加する。
 // 戻るボタンを実装する。
 // リフレッシュボタンを実装する。
 // テストコードを書く。
