@@ -87,8 +87,42 @@ public class WebView_Google extends AppCompatActivity {
             }
         });
 
-        //
+        // 進むが有効でない場合、ボタンを無効化する。
+        if (myWebView.canGoForward() == true) {
+            button_next.setEnabled(true);
+        } else {
+            button_next.setEnabled(false);
+        }
+
+        // 戻るが有効でない場合、ボタンを無効化する。
+        if (myWebView.canGoBack() == true) {
+            button_back.setEnabled(true);
+        } else {
+            button_back.setEnabled(false);
+        }
+
+        // 進むボタンの実装
+        button_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (myWebView.canGoForward()) {
+                    myWebView.goForward();
+                }
+            }
+        });
+
+        // 戻るボタンの実装
+        button_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (myWebView.canGoBack()) {
+                    myWebView.goBack();
+                }
+            }
+        });
+
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
