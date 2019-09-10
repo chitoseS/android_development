@@ -27,7 +27,7 @@ public class FirstScreen extends AppCompatActivity {
         commonMessage.InfoMessage(receivedData);
 
         // findViewで戻るボタンのIDを取得
-        Button button = findViewById(R.id.returnButton);
+        Button button = findViewById(R.id.Screen2_button);
 
         // 戻るボタン処理の実装
         button.setOnClickListener(new View.OnClickListener() {

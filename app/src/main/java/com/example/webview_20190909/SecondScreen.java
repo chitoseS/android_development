@@ -4,10 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class SecondScreen extends AppCompatActivity {
@@ -26,7 +24,7 @@ public class SecondScreen extends AppCompatActivity {
         CommonMessage commonMessage = new CommonMessage();
         commonMessage.InfoMessage(receivedData);
         // findViewで戻るボタンのIDを取得
-        Button button = findViewById(R.id.returnButton);
+        Button button = findViewById(R.id.Screen2_button);
 
         // 戻るボタン処理の実装
         button.setOnClickListener(new View.OnClickListener() {

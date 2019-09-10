@@ -30,7 +30,6 @@ public class WebView_Google extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         // WebView
         WebView myWebView = findViewById(R.id.webView); // レイアウトに設置したWebViewを追加します。
         myWebView.setWebViewClient(new WebViewClient()); // リンクをクリックしたときに標準ブラウザへ遷移させずにWebView内で表示
@@ -38,13 +37,9 @@ public class WebView_Google extends AppCompatActivity {
 
         // findView
         Button button1 = findViewById(R.id.Screen1_button);
-        Button button2 = findViewById(R.id.returnButton);
+        Button button2 = findViewById(R.id.Screen2_button);
 
-        // 二つのボタンがある場合、別のonClickListenerを用意しないといけないので、setTagを用いる。
-        button1.setTag(1);
-        button2.setTag(2);
-
-        // ボタン処理
+        // ボタン1の処理
         button1.setOnClickListener(new View.OnClickListener() {
             // 変数初期化
             Intent intent = new Intent();
@@ -52,29 +47,16 @@ public class WebView_Google extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                // どのボタンが押されたか判断する
-                Log.d("Button Tapped", view.getTag().toString());
-                switch (view.getId()) {
-                    // 画面1へ遷移するボタン
-                    case R.id.Screen1_button:
-                        intent = new Intent(WebView_Google.this, FirstScreen.class);
-                        data = "ここは画面 1 です。";
-                        intent.putExtra("Message", data);
-
-                        //遷移先の画面を起動
-                        startActivityForResult(intent, Consts.REQUEST_CODE_FIRST);
-
-                        // 画面2へ遷移するボタン
-                    case R.id.returnButton:
-                        intent = new Intent(WebView_Google.this, SecondScreen.class);
-                        data = "ここは画面 2 です。";
-                        intent.putExtra("Message", data);
-                        break;
-                }
+                // 画面1へ遷移するボタン
+                intent = new Intent(WebView_Google.this, FirstScreen.class);
+                data = "ここは画面 1 です。";
+                intent.putExtra("Message", data);
+                //遷移先の画面を起動
+                startActivityForResult(intent, Consts.REQUEST_CODE_FIRST);
             }
         });
 
-        // ボタン処理
+        // ボタン2の処理
         button2.setOnClickListener(new View.OnClickListener() {
             // 変数初期化
             Intent intent = new Intent();
@@ -82,27 +64,13 @@ public class WebView_Google extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                // どのボタンが押されたか判断する
-                Log.d("Button Tapped", view.getTag().toString());
-                switch (view.getId()) {
-                    // 画面1へ遷移するボタン
-                    case R.id.Screen1_button:
-                        intent = new Intent(WebView_Google.this, FirstScreen.class);
-                        data = "ここは画面 1 です。";
-                        intent.putExtra("Message", data);
+                // 画面2へ遷移するボタン
+                intent = new Intent(WebView_Google.this, SecondScreen.class);
+                data = "ここは画面 2 です。";
+                intent.putExtra("Message", data);
 
-                        //遷移先の画面を起動
-                        startActivityForResult(intent, Consts.REQUEST_CODE_FIRST);
-
-                        // 画面2へ遷移するボタン
-                    case R.id.returnButton:
-                        intent = new Intent(WebView_Google.this, SecondScreen.class);
-                        data = "ここは画面 2 です。";
-                        intent.putExtra("Message", data);
-
-                        //遷移先の画面を起動
-                        startActivityForResult(intent, Consts.REQUEST_CODE_SECOND);
-                }
+                //遷移先の画面を起動
+                startActivityForResult(intent, Consts.REQUEST_CODE_SECOND);
             }
         });
     }
