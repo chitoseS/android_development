@@ -24,45 +24,34 @@ public class FirstScreen extends AppCompatActivity {
         String receivedData = intent.getStringExtra("name");
         TextView textView = findViewById(R.id.textView2);
         textView.setText(receivedData);
-
         // データ確認
         CommonMessage commonMessage = new CommonMessage();
         commonMessage.InfoMessage(receivedData);
 
-        // findView
+        // findViewで戻るボタンのIDを取得
         Button button = findViewById(R.id.returnButton);
 
         // 戻るボタン処理
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // 遷移先の画面を準備
                 Intent intent = new Intent(FirstScreen.this, WebView_Google.class);
 
-
+                // 遷移先に渡すデータを準備
+                Intent result = new Intent();
+                // resultに、screenNameというキーをつけて、値を設定する。
+                result.putExtra("screenNum", Consts.SCREEN_NUMBER_FIRST);
+                // 処理が成功した場合
+                setResult(RESULT_OK, result);
+                finish();
 
                 //遷移先の画面を起動
-                startActivity(intent);
+//                startActivity(intent);
+
+                //Todo
+                // finish()で画面を終了する方法とstartActivity()で画面を起動する方法はどちらが良い？
             }
         });
-    }
-
-    // 画面遷移用のボタンイベント
-    public void onClick(View v){
-        // ログの表示
-        CommonMessage commonMessage = new CommonMessage();
-        commonMessage.InfoMessage("_________");
-//        // インテントの作成
-        Intent intent = new Intent(this, SecondScreen.class);
-//        EditText editText = this.findViewById(R.id.button);
-//        intent.putExtra("sendText",editText.getText().toString());
-//        //遷移先の画面を起動
-        startActivity(intent);
-    }
-
-    public void onClickBack(View v){
-        // インテントの作成
-        Intent intent = new Intent(this, WebView_Google.class);
-        //遷移先の画面を起動
-        startActivity(intent);
     }
 }

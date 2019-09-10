@@ -1,5 +1,6 @@
 package com.example.webview_20190909;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +12,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.Objects;
 
 
 //TODO:
@@ -24,6 +27,7 @@ public class WebView_Google extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         // WebView
         WebView myWebView = findViewById(R.id.webView); // レイアウトに設置したWebViewを追加します。
@@ -46,8 +50,35 @@ public class WebView_Google extends AppCompatActivity {
                 commonMessage.InfoMessage("data");
 
                 //遷移先の画面を起動
-                startActivity(intent);
+                startActivityForResult(intent, Consts.REQUEST_CODE);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            // firstから戻ってきた場合
+            case (Consts.REQUEST_CODE):
+                if (resultCode == RESULT_OK) {
+                    // データの受け取り
+                    String receivedData = Objects.requireNonNull(data).getStringExtra("screenNum");
+                    TextView textView = findViewById(R.id.textView3);
+                    textView.setText(receivedData);
+                    // データ確認
+                    CommonMessage commonMessage = new CommonMessage();
+                    commonMessage.InfoMessage("------------------------");
+                    commonMessage.InfoMessage(receivedData);
+                }else{
+                    // その他
+                    CommonMessage commonMessage = new CommonMessage();
+                    commonMessage.InfoMessage("Another");
+                }
+                break;
+            default:
+                break;
+        }
     }
 }
