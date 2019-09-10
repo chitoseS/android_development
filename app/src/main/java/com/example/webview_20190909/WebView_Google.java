@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -31,13 +30,16 @@ public class WebView_Google extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // WebView
-        WebView myWebView = findViewById(R.id.webView); // レイアウトに設置したWebViewを追加します。
+        final WebView myWebView = findViewById(R.id.webView); // レイアウトに設置したWebViewを追加します。
         myWebView.setWebViewClient(new WebViewClient()); // リンクをクリックしたときに標準ブラウザへ遷移させずにWebView内で表示
         myWebView.loadUrl("https://www.google.com/"); // 表示させたいURLを記述します。
 
         // findView
         Button button1 = findViewById(R.id.Screen1_button);
         Button button2 = findViewById(R.id.Screen2_button);
+        Button button_refresh = findViewById(R.id.refresh_button);
+        Button button_next = findViewById(R.id.next_button);
+        Button button_back = findViewById(R.id.back_button);
 
         // ボタン1の処理
         button1.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +75,16 @@ public class WebView_Google extends AppCompatActivity {
                 startActivityForResult(intent, Consts.REQUEST_CODE_SECOND);
             }
         });
+
+        // 更新ボタンの実装
+        button_refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myWebView.reload();
+            }
+        });
+
+        //
     }
 
     @Override
@@ -99,7 +111,7 @@ public class WebView_Google extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             // データの受け取り
             String receivedData = Objects.requireNonNull(data).getStringExtra("screenNum");
-            TextView textView = findViewById(R.id.textView3);
+            TextView textView = findViewById(R.id.textView);
             textView.setText(receivedData);
             // データ確認
             CommonMessage commonMessage = new CommonMessage();
