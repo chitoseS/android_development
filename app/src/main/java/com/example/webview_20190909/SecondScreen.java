@@ -18,12 +18,9 @@ public class SecondScreen extends AppCompatActivity {
 
     // 画面遷移用のボタンイベント
     public void onClick(View v){
-        Log.v("test","----------------");
-//        // インテントの作成
+        // インテントの作成
         Intent intent = new Intent(this, FirstScreen.class);
-//        EditText editText = this.findViewById(R.id.button);
-//        intent.putExtra("sendText",editText.getText().toString());
-//        //遷移先の画面を起動
+        //遷移先の画面を起動
         startActivity(intent);
     }
 
