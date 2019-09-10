@@ -35,22 +35,72 @@ public class WebView_Google extends AppCompatActivity {
         myWebView.loadUrl("https://www.google.com/"); // 表示させたいURLを記述します。
 
         // findView
-        Button button = findViewById(R.id.button3);
+        Button button1 = findViewById(R.id.Screen1_button);
+        Button button2 = findViewById(R.id.Return_button);
+
+        // 二つのボタンがある場合、別のonClickListenerを用意しないといけないので、setTagを用いる。
+        button1.setTag(1);
+        button2.setTag(2);
 
         // ボタン処理
-        button.setOnClickListener(new View.OnClickListener() {
+        button1.setOnClickListener(new View.OnClickListener() {
+            // 変数初期化
+            Intent intent = new Intent();
+            String data = "";
+
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(WebView_Google.this, FirstScreen.class);
-                String data = "My name is Moriota";
-                intent.putExtra("name", data);
+                // どのボタンが押されたか判断する
+                Log.d("Button Tapped", view.getTag().toString());
+                switch (view.getId()) {
+                    // 画面1へ遷移するボタン
+                    case R.id.Screen1_button:
+                        intent = new Intent(WebView_Google.this, FirstScreen.class);
+                        data = "ここは画面 1 です。";
+                        intent.putExtra("name", data);
 
-                // データ確認
-                CommonMessage commonMessage = new CommonMessage();
-                commonMessage.InfoMessage("data");
+                        //遷移先の画面を起動
+                        startActivityForResult(intent, Consts.REQUEST_CODE_FIRST);
 
-                //遷移先の画面を起動
-                startActivityForResult(intent, Consts.REQUEST_CODE);
+                    // 画面2へ遷移するボタン
+                    case R.id.Return_button:
+                        intent = new Intent(WebView_Google.this, SecondScreen.class);
+                        data = "ここは画面 2 です。";
+                        intent.putExtra("name", data);
+                        break;
+                }
+            }
+        });
+
+        // ボタン処理
+        button2.setOnClickListener(new View.OnClickListener() {
+            // 変数初期化
+            Intent intent = new Intent();
+            String data = "";
+
+            @Override
+            public void onClick(View view) {
+                // どのボタンが押されたか判断する
+                Log.d("Button Tapped", view.getTag().toString());
+                switch (view.getId()) {
+                    // 画面1へ遷移するボタン
+                    case R.id.Screen1_button:
+                        intent = new Intent(WebView_Google.this, FirstScreen.class);
+                        data = "ここは画面 1 です。";
+                        intent.putExtra("name", data);
+
+                        //遷移先の画面を起動
+                        startActivityForResult(intent, Consts.REQUEST_CODE_FIRST);
+
+                        // 画面2へ遷移するボタン
+                    case R.id.Return_button:
+                        intent = new Intent(WebView_Google.this, SecondScreen.class);
+                        data = "ここは画面 2 です。";
+                        intent.putExtra("name", data);
+
+                        //遷移先の画面を起動
+                        startActivityForResult(intent, Consts.REQUEST_CODE_SECOND);
+                }
             }
         });
     }
@@ -61,7 +111,7 @@ public class WebView_Google extends AppCompatActivity {
 
         switch (requestCode) {
             // firstから戻ってきた場合
-            case (Consts.REQUEST_CODE):
+            case (Consts.REQUEST_CODE_FIRST):
                 if (resultCode == RESULT_OK) {
                     // データの受け取り
                     String receivedData = Objects.requireNonNull(data).getStringExtra("screenNum");
@@ -71,12 +121,29 @@ public class WebView_Google extends AppCompatActivity {
                     CommonMessage commonMessage = new CommonMessage();
                     commonMessage.InfoMessage("------------------------");
                     commonMessage.InfoMessage(receivedData);
-                }else{
+                } else {
                     // その他
                     CommonMessage commonMessage = new CommonMessage();
                     commonMessage.InfoMessage("Another");
                 }
                 break;
+            case(Consts.REQUEST_CODE_SECOND):
+                if (resultCode == RESULT_OK) {
+                    // データの受け取り
+                    String receivedData = Objects.requireNonNull(data).getStringExtra("screenNum");
+                    TextView textView = findViewById(R.id.textView3);
+                    textView.setText(receivedData);
+                    // データ確認
+                    CommonMessage commonMessage = new CommonMessage();
+                    commonMessage.InfoMessage("------------------------");
+                    commonMessage.InfoMessage(receivedData);
+                }else {
+                    // その他
+                    CommonMessage commonMessage = new CommonMessage();
+                    commonMessage.InfoMessage("Another");
+                }
+                break;
+
             default:
                 break;
         }

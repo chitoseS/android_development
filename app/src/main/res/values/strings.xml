@@ -4,4 +4,6 @@
     <string name="screen_massage">画面遷移先です。</string>
     <string name="return_button">RETURN</string>
     <string name="main_manu">メインメニューです。</string>
+    <string name="next_screen1">画面①へ</string>
+    <string name="next_screen2">画面②へ</string>
 </resources>
