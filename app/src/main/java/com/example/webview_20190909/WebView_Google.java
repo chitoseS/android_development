@@ -81,6 +81,10 @@ public class WebView_Google extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 myWebView.reload();
+
+                // textViewの初期化
+                TextView textView = findViewById(R.id.textView);
+                textView.setText(Consts.TEXT_VIEW_INIT_MESSAGE_MENU);
             }
         });
 
