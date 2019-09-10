@@ -17,7 +17,9 @@ import java.util.Objects;
 
 
 //TODO:
+// 更新ボタンを実装する。
 // 戻るボタンを実装する。
+// - 戻る先がない場合は、disableにする。
 // リフレッシュボタンを実装する。
 // テストコードを書く。
 
@@ -62,7 +64,7 @@ public class WebView_Google extends AppCompatActivity {
                         //遷移先の画面を起動
                         startActivityForResult(intent, Consts.REQUEST_CODE_FIRST);
 
-                    // 画面2へ遷移するボタン
+                        // 画面2へ遷移するボタン
                     case R.id.returnButton:
                         intent = new Intent(WebView_Google.this, SecondScreen.class);
                         data = "ここは画面 2 です。";
@@ -112,40 +114,33 @@ public class WebView_Google extends AppCompatActivity {
         switch (requestCode) {
             // firstから戻ってきた場合
             case (Consts.REQUEST_CODE_FIRST):
-                if (resultCode == RESULT_OK) {
-                    // データの受け取り
-                    String receivedData = Objects.requireNonNull(data).getStringExtra("screenNum");
-                    TextView textView = findViewById(R.id.textView3);
-                    textView.setText(receivedData);
-                    // データ確認
-                    CommonMessage commonMessage = new CommonMessage();
-                    commonMessage.InfoMessage("------------------------");
-                    commonMessage.InfoMessage(receivedData);
-                } else {
-                    // その他
-                    CommonMessage commonMessage = new CommonMessage();
-                    commonMessage.InfoMessage("Another");
-                }
+                returnMenu(resultCode, data);
                 break;
-            case(Consts.REQUEST_CODE_SECOND):
-                if (resultCode == RESULT_OK) {
-                    // データの受け取り
-                    String receivedData = Objects.requireNonNull(data).getStringExtra("screenNum");
-                    TextView textView = findViewById(R.id.textView3);
-                    textView.setText(receivedData);
-                    // データ確認
-                    CommonMessage commonMessage = new CommonMessage();
-                    commonMessage.InfoMessage("------------------------");
-                    commonMessage.InfoMessage(receivedData);
-                }else {
-                    // その他
-                    CommonMessage commonMessage = new CommonMessage();
-                    commonMessage.InfoMessage("Another");
-                }
+            case (Consts.REQUEST_CODE_SECOND):
+                returnMenu(resultCode, data);
                 break;
 
             default:
                 break;
+        }
+    }
+
+    // 遷移先画面から戻ってきたときの共通処理
+    // 遷移先から渡されたデータを受け取り、画面のTextViewに表示する。
+    private void returnMenu(int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            // データの受け取り
+            String receivedData = Objects.requireNonNull(data).getStringExtra("screenNum");
+            TextView textView = findViewById(R.id.textView3);
+            textView.setText(receivedData);
+            // データ確認
+            CommonMessage commonMessage = new CommonMessage();
+            commonMessage.InfoMessage("------------------------");
+            commonMessage.InfoMessage(receivedData);
+        } else {
+            // その他
+            CommonMessage commonMessage = new CommonMessage();
+            commonMessage.InfoMessage("Another");
         }
     }
 }
