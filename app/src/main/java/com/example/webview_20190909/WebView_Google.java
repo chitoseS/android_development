@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -16,9 +17,9 @@ import java.util.Objects;
 
 
 //TODO:
-// 戻るボタンを実装する。
-// - 戻る先がない場合は、disableにする。
-// リフレッシュボタンを実装する。
+// 戻るボタンを実装する。[OK]
+// - 戻る先がない場合は、disableにする。[]
+// リフレッシュボタンを実装する。[OK]
 // テストコードを書く。
 
 public class WebView_Google extends AppCompatActivity {
@@ -87,19 +88,31 @@ public class WebView_Google extends AppCompatActivity {
             }
         });
 
-        // 進むが有効でない場合、ボタンを無効化する。
-        if (myWebView.canGoForward() == true) {
-            button_next.setEnabled(true);
-        } else {
-            button_next.setEnabled(false);
-        }
+        // WebViewClientの設定 http://accelebiz.hatenablog.com/entry/2016/08/25/232305
+        myWebView.setWebViewClient(new WebViewClient() {
 
-        // 戻るが有効でない場合、ボタンを無効化する。
-        if (myWebView.canGoBack() == true) {
-            button_back.setEnabled(true);
-        } else {
-            button_back.setEnabled(false);
-        }
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+                Log.d("--- ログ --->", "タップされたリンクのurl:" + url);
+
+                return false;
+            }
+        });
+
+//        // 進むが有効でない場合、ボタンを無効化する。
+//        if (myWebView.canGoForward() == true) {
+//            button_next.setEnabled(true);
+//        } else {
+//            button_next.setEnabled(false);
+//        }
+//
+//        // 戻るが有効でない場合、ボタンを無効化する。
+//        if (myWebView.canGoBack() == true) {
+//            button_back.setEnabled(true);
+//        } else {
+//            button_back.setEnabled(false);
+//        }
 
         // 進むボタンの実装
         button_next.setOnClickListener(new View.OnClickListener() {
