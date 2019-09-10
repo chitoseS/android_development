@@ -19,7 +19,7 @@ public class FirstScreen extends AppCompatActivity {
 
         // Menu画面からデータの受け取り
         Intent intent = getIntent();
-        String receivedData = intent.getStringExtra("name");
+        String receivedData = intent.getStringExtra("Message");
         TextView textView = findViewById(R.id.textView2);
         textView.setText(receivedData);
         // 受取ったデータの確認

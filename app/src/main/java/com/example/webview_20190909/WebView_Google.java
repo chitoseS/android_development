@@ -36,7 +36,7 @@ public class WebView_Google extends AppCompatActivity {
 
         // findView
         Button button1 = findViewById(R.id.Screen1_button);
-        Button button2 = findViewById(R.id.Return_button);
+        Button button2 = findViewById(R.id.returnButton);
 
         // 二つのボタンがある場合、別のonClickListenerを用意しないといけないので、setTagを用いる。
         button1.setTag(1);
@@ -57,16 +57,16 @@ public class WebView_Google extends AppCompatActivity {
                     case R.id.Screen1_button:
                         intent = new Intent(WebView_Google.this, FirstScreen.class);
                         data = "ここは画面 1 です。";
-                        intent.putExtra("name", data);
+                        intent.putExtra("Message", data);
 
                         //遷移先の画面を起動
                         startActivityForResult(intent, Consts.REQUEST_CODE_FIRST);
 
                     // 画面2へ遷移するボタン
-                    case R.id.Return_button:
+                    case R.id.returnButton:
                         intent = new Intent(WebView_Google.this, SecondScreen.class);
                         data = "ここは画面 2 です。";
-                        intent.putExtra("name", data);
+                        intent.putExtra("Message", data);
                         break;
                 }
             }
@@ -87,16 +87,16 @@ public class WebView_Google extends AppCompatActivity {
                     case R.id.Screen1_button:
                         intent = new Intent(WebView_Google.this, FirstScreen.class);
                         data = "ここは画面 1 です。";
-                        intent.putExtra("name", data);
+                        intent.putExtra("Message", data);
 
                         //遷移先の画面を起動
                         startActivityForResult(intent, Consts.REQUEST_CODE_FIRST);
 
                         // 画面2へ遷移するボタン
-                    case R.id.Return_button:
+                    case R.id.returnButton:
                         intent = new Intent(WebView_Google.this, SecondScreen.class);
                         data = "ここは画面 2 です。";
-                        intent.putExtra("name", data);
+                        intent.putExtra("Message", data);
 
                         //遷移先の画面を起動
                         startActivityForResult(intent, Consts.REQUEST_CODE_SECOND);
