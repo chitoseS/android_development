@@ -23,6 +23,8 @@ import java.util.Objects;
 // テストコードを書く。
 
 public class WebView_Google extends AppCompatActivity {
+    // クラス変数
+    WebView mWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +32,9 @@ public class WebView_Google extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // WebView
-        final WebView myWebView = findViewById(R.id.webView); // レイアウトに設置したWebViewを追加します。
-        myWebView.setWebViewClient(new WebViewClient()); // リンクをクリックしたときに標準ブラウザへ遷移させずにWebView内で表示
-        myWebView.loadUrl("https://www.google.com/"); // 表示させたいURLを記述します。
+        mWebView = findViewById(R.id.webView); // レイアウトに設置したWebViewを追加します。
+        mWebView.setWebViewClient(new WebViewClient()); // リンクをクリックしたときに標準ブラウザへ遷移させずにWebView内で表示
+        mWebView.loadUrl("https://www.google.com/"); // 表示させたいURLを記述します。
 
         // findView
         Button button1 = findViewById(R.id.Screen1_button);
@@ -80,7 +82,7 @@ public class WebView_Google extends AppCompatActivity {
         button_refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myWebView.reload();
+                mWebView.reload();
 
                 // textViewの初期化
                 TextView textView = findViewById(R.id.textView);
@@ -89,7 +91,7 @@ public class WebView_Google extends AppCompatActivity {
         });
 
         // WebViewClientの設定 http://accelebiz.hatenablog.com/entry/2016/08/25/232305
-        myWebView.setWebViewClient(new WebViewClient() {
+        mWebView.setWebViewClient(new WebViewClient() {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -101,14 +103,14 @@ public class WebView_Google extends AppCompatActivity {
         });
 
 //        // 進むが有効でない場合、ボタンを無効化する。
-//        if (myWebView.canGoForward() == true) {
+//        if (mWebView.canGoForward() == true) {
 //            button_next.setEnabled(true);
 //        } else {
 //            button_next.setEnabled(false);
 //        }
 //
 //        // 戻るが有効でない場合、ボタンを無効化する。
-//        if (myWebView.canGoBack() == true) {
+//        if (mWebView.canGoBack() == true) {
 //            button_back.setEnabled(true);
 //        } else {
 //            button_back.setEnabled(false);
@@ -118,8 +120,8 @@ public class WebView_Google extends AppCompatActivity {
         button_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (myWebView.canGoForward()) {
-                    myWebView.goForward();
+                if (mWebView.canGoForward()) {
+                    mWebView.goForward();
                 }
             }
         });
@@ -128,8 +130,8 @@ public class WebView_Google extends AppCompatActivity {
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (myWebView.canGoBack()) {
-                    myWebView.goBack();
+                if (mWebView.canGoBack()) {
+                    mWebView.goBack();
                 }
             }
         });
@@ -172,5 +174,9 @@ public class WebView_Google extends AppCompatActivity {
             CommonMessage commonMessage = new CommonMessage();
             commonMessage.InfoMessage("Another");
         }
+    }
+
+    public String getStrFromFunction(String str){
+        return str;
     }
 }
