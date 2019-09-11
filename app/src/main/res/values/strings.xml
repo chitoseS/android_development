@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">WebView-20190909</string>
+    <string name="on_button">Next</string>
+    <string name="screen_massage">画面遷移先です。</string>
+    <string name="main_manu">メインメニューです。</string>
+    <string name="next_screen1">画面１へ</string>
+    <string name="next_screen2">画面２へ</string>
+    <string name="refresh">更新</string>
+    <string name="next">進む</string>
+    <string name="back">戻る</string>
+</resources>
