@@ -18,7 +18,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/Screen2_button"
+        android:id="@+id/screen2_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -30,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/Screen1_button"
+        android:id="@+id/screen1_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -56,7 +56,7 @@
         android:id="@+id/refresh_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Refresh"
+        android:text="@string/refresh"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

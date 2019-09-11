@@ -37,8 +37,8 @@ public class WebView_Google extends AppCompatActivity {
         mWebView.loadUrl("https://www.google.com/"); // 表示させたいURLを記述します。
 
         // findView
-        Button button1 = findViewById(R.id.Screen1_button);
-        Button button2 = findViewById(R.id.Screen2_button);
+        Button button1 = findViewById(R.id.screen1_button);
+        Button button2 = findViewById(R.id.screen2_button);
         Button button_refresh = findViewById(R.id.refresh_button);
         Button button_next = findViewById(R.id.next_button);
         Button button_back = findViewById(R.id.back_button);
